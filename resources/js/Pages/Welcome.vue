@@ -1,0 +1,84 @@
+<template>
+   <Head title="Welcome"></Head>
+   
+   <div class="grid grid-cols-2 text-right py-10 px-72 bg-gray-800 text-gray-300">
+
+    <div>
+        <jet-application-mark class="h-12 w-auto"></jet-application-mark>
+    </div>
+
+    <div v-if="canLogin">
+        <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm underline">Dashboard</Link>
+    
+    <template v-else>
+       <Link :href="route('login')" class="text-base underline"> Login</Link>
+       <Link v-if="canRegister" :href="route('register')" class="text-base underline place-self-end ml-4"> Register</Link>
+    </template>
+
+
+    </div>
+
+   </div>
+   
+
+   <div> 
+    <section class="bg-gray-800 pt-16 h-screen px-72">
+        <div class="h-2/3 flex flex-wrap content-between pb-36">
+            <p class="border-b-2 font-bold border-gray-400 pb-3 text-2xl
+        text-gray-300 uppercase"> Hey this is Raunak and Im a software engineer and i would be glad to work with you.</p>
+
+        <div class="flex items-end border-b-2 border-gray-500 pb-2">
+            <p class="font-bold mr-5 text-gray-500 text-xl">Want to know more?</p>
+            <JetButton class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">Let's Chat</JetButton>
+        </div>
+
+        </div>
+        <div class="animate-pulse mt-3 text-gray-300 text-center text-9xl">
+            <a href="#skills">&#8675;</a>
+        </div>        
+        
+    </section>
+        
+    <section id="skills" class="bg-gray-200 text-gray-800 px-72 py-10 h-screen">
+        <h2 class="text-6xl font-bold pt-3">Skills</h2>
+        <div class="flex justify-center mt-10">
+            <JetButton class="bg-indigo-800 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in Touch</JetButton>
+        </div>
+        
+    </section>
+
+    <section class="bg-gray-600 text-gray-200 px-72 py-10 h-screen">
+        <h2 class="text-6xl font-bold pt-3">Projects</h2>
+        <div class="flex justify-center mt-10">
+            <JetButton class="bg-purple-300 rounded font-bold text-sm text-gray-800 hover:bg-indigo-200">Know More</JetButton>
+        </div>
+        
+    </section>
+
+    <section class="flex justify-between py-10 px-72 bg-gray-800 text-gray-300 text-xl">
+        <p
+        >&copy; Raunak. All rights Reserved</p>
+        <div class="flex justify-evenly items-center">
+            Github
+            Twitter
+            Stackoverflow
+
+        </div>
+    </section>
+   </div>
+</template>
+
+<script setup>
+import { Head, Link } from '@inertiajs/vue3';
+import JetApplicationMark from '@/Components/ApplicationMark.vue';
+import { defineComponent } from 'vue';
+
+import JetButton from '@/Components/PrimaryButton.vue'
+
+
+defineProps({
+    canLogin: Boolean,
+    canRegister: Boolean,
+    
+});
+</script>
