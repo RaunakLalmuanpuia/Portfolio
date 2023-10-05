@@ -1,12 +1,12 @@
 <x-mail::message>
-# Hi, there
+  # Hi, there
 
-Someone contacted you with this message:
+  Someone contacted you with this message:
 
-"{{ $message }}"
+  "{{ $message }}"
 
-Maybe, you want to get in touch, using this shared email: {{ $email }}
+  Maybe, you want to get in touch, using this shared email: {{ $email }}
 
-Thanks,<br>
-{{ config('app.name') }}
+  Thanks,<br>
+  {{ config('app.name') }}
 </x-mail::message>

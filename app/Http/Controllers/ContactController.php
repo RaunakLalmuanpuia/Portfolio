@@ -11,9 +11,14 @@ class ContactController extends Controller
     public function contact(Request $request)
     {
         // dd($request->all());
-        Mail::to(config("mail.to.address"), config('mail.to.name'))
-        ->send(new ContactedMessage($request->email, $request->message));
+        $request->validate([
+            'email' => ['required', 'email:filter', 'max:255'],
+            'message' => ['required', 'min:10', 'max:255'],
+        ]);
 
-        return redirect('/');
+        Mail::to(config("mail.to.address"), config('mail.to.name'))
+            ->send(new ContactedMessage($request->email, $request->message));
+
+        return redirect('/')->with('contacted', true);
     }
 }

@@ -40,6 +40,6 @@ Route::middleware([
 
 Route::post('contact', [ContactController::class, 'contact'])->name('contact');
 
-// Route::get('/test', function(){
-//     return new ContactedMessage('test@test.com', 'Just a test');
-// });
+Route::get('/test', function () {
+    return new ContactedMessage('test@test.com', 'Just a test');
+});
