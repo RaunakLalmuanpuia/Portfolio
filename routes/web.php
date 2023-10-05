@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Mail\ContactedMessage;
 use App\Models\Project;
 use Inertia\Inertia;
 use App\Models\Skill;
@@ -35,3 +37,9 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::post('contact', [ContactController::class, 'contact'])->name('contact');
+
+// Route::get('/test', function(){
+//     return new ContactedMessage('test@test.com', 'Just a test');
+// });
