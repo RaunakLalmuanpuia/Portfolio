@@ -27,7 +27,7 @@
                 >
                     Register</Link
                 >
-            </template>
+                </template>
         </div>
     </div>
 
@@ -112,7 +112,7 @@
         >
             <p>&copy; Raunak. All rights Reserved</p>
             <div class="flex items-center justify-evenly">
-                <Link class="px-2 pb-1 border-b hover:text-gray-50" href=""
+                <Link class="px-2 pb-1 border-b hover:text-gray-50" href="https://www.google.com/"
                     >Github</Link
                 >
                 <Link class="px-2 pb-1 border-b hover:text-gray-50" href=""
@@ -126,10 +126,10 @@
     </div>
     <jet-modal :show="contacting" :closeable="true" @close="contacting = null">
         
-            <div class="bg-green-400 shadow-2xl p-8 text-center font-bold" v-if="$page.props.flash.contacted">
-            <p class="text-8xl m-5" >👍</p>
-            <p class="text-5xl font-bold m-2">THanks!</p>
-            <p class="text-xl m-2">I'll get back to you soon.</p>
+            <div class="p-8 font-bold text-center bg-green-400 shadow-2xl" v-if="$page.props.flash.contacted">
+            <p class="m-5 text-8xl" >👍</p>
+            <p class="m-2 text-5xl font-bold">THanks!</p>
+            <p class="m-2 text-xl">I'll get back to you soon.</p>
             </div>
 
             <div v-else class="p-8 shadow-2xl bg-gray-50">
@@ -161,7 +161,7 @@
                         class="justify-center px-5 py-3 mt-5 text-sm bg-purple-400 w-96 rounded-xl"
                         :disabled="form.processing"
                     >
-                    <span class="animate-spin mr-1" v-show="form.processing">&#9696</span>
+                    <span class="mr-1 animate-spin" v-show="form.processing">&#9696</span>
                     <span v-show="!form.processing">Get In touch</span>
                         
                     </jet-button>

@@ -10,7 +10,7 @@ class Skill extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name", "Color", 
+        "name", "color", 
 ];
 
     public static function getAvailableBackgroundColors(){
