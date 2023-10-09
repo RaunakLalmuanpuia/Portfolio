@@ -1,32 +1,29 @@
 <template>
     <app-layout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Dashboard
             </h2>
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div
-                    class="bg-white overflow-hidden shadow-xl rounded-lg p-6 border-gray-200 flex flex-col text-xl"
-                >
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="flex flex-col p-6 overflow-hidden text-xl bg-white border-gray-200 rounded-lg shadow-xl ">
                     <p class="mb-5">Your Resources</p>
 
                     <ul class="p-3">
-                        <li class="ml-2 flex flex-row items-center">
-                            <div class="bg-gray-500 mr-3 h-2 w-2"></div>
-                            <Link
-                                class="hover:text-gray-800 mt-2 text-sm text-indigo-500 border-b border-gray-400"
+                        <li class="flex flex-row items-center ml-2">
+                            <div class="w-2 h-2 mr-3 bg-gray-500"></div>
+                            <Link class="mt-2 text-sm text-indigo-500 border-b border-gray-400 hover:text-gray-800"
+
                                 :href="route('skills.index')"
                             >
                                 Skills
                             </Link>
                         </li>
-                        <li class="ml-2 flex flex-row items-center">
-                            <div class="bg-gray-500 mr-3 h-2 w-2"></div>
-                            <Link
-                                class="hover:text-gray-800 mt-2 text-sm text-indigo-500 border-b border-gray-400"
+                        <li class="flex flex-row items-center ml-2">
+                            <div class="w-2 h-2 mr-3 bg-gray-500"></div>
+                            <Link class="mt-2 text-sm text-indigo-500 border-b border-gray-400 hover:text-gray-800"
                                 :href="route('projects.index')"
                             >
                                 Projects
@@ -40,14 +37,14 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { Link } from "@inertiajs/inertia-vue3";
-import AppLayout from "@/Layouts/AppLayout.vue";
+    import { defineComponent } from 'vue'
+    import { Link } from '@inertiajs/vue3'
+    import AppLayout from '@/Layouts/AppLayout.vue'
 
-export default defineComponent({
-    components: {
-        AppLayout,
-        Link,
-    },
-});
+    export default defineComponent({
+        components: {
+            AppLayout,
+            Link,
+        },
+    })
 </script>

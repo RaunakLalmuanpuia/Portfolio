@@ -1,7 +1,8 @@
 <template>
-    <app-layout>
+    
+    <app-layout title="Skills">
 
-         <template #header>
+         <template #header >
            <h2 class="text-xl font-semibold leading-tight text-gray-800">Skills</h2>
         </template>
 
@@ -16,7 +17,7 @@
                     Add new +
                 </jet-button>
                 
-                <jet-modal :show="acting" closeable="true" @close="acting = null">
+                <jet-modal :show="acting" :closeable="true" @close="acting = null">
                     <div class="p-8 shadow-2xl bg-gray-50" >
                         <form class="flex-col items-center p-16" @submit.prevent="submit"> 
                         
@@ -66,18 +67,18 @@
                             </p>
                         </td>
                         <td class="px-6 py-4">
-                            <jet-button class="mr-2 text-indigo-500 border border-indigo-500 bg-indigo-50 hover:bg-indigo-100"
+                            <jet-button class="mr-2 text-indigo-500 bg-indigo-500 border border-indigo-300 hover:bg-indigo-800"
                             @click="
-                            acting= true;
-                            method='put';
-                            action = route('skills.update', [skill.id])
+                            acting= true; //open model
+                            method='put'; 
+                            action = route('skills.update', [skill.id]) // 
                             form.name = skill.name;
                             form.color = skill.color;
                             "
                             >Edit</jet-button>
                             
-                            <jet-button class="ml-2 text-red-500 border border-red-500 bg-red-50 hover:bg-red-100"
-                            @click="
+                            <jet-button class="ml-2 text-red-500 bg-red-500 border border-red-300 hover:bg-red-800"
+                            @click=" //after clicking button
                             method='delete';
                             action = route('skills.destroy', [skill.id]);
                             submit(); ">
@@ -125,7 +126,7 @@ export default{
     methods:{
         submit()
         {
-            this.form.submit('post', route('skills.store'), 
+            this.form.submit(this.method, this.action, 
             {
                 onSuccess: ()=> {
                     this.form.reset('name');

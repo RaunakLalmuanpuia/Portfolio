@@ -41,6 +41,37 @@ class ProjectController extends Controller
 
         Project::create($request->all());
 
-        return redirect()->route('project.index');
+        return redirect()->route('projects.index');
+    }
+    public function update(Request $request,  Project $project)
+    {
+        $request->validate([
+            'title' => [
+                'required',
+                'max:255',
+                Rule::unique(Project::class)->ignore($project->id)
+            ],
+            'Description' => [
+                'required',
+                'max:255',
+            ],
+            'Color' => [
+                'required',
+                'in:' . implode(',', Project::getAvailableTextColors())
+            ],
+            'icon_name' => [
+                'required',
+                'in:' . implode(',', Project::getAvailableIcons())
+            ],
+        ]);
+        $project = Project::find($project->id);
+        $project->update($request->all());
+
+        return redirect()->route('projects.index');
+    }
+    public function destroy(Project $project)
+    {
+       $project->delete();
+       return redirect()->route('projects.index');
     }
 }

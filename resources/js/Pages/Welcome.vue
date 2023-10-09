@@ -13,18 +13,15 @@
                 v-if="$page.props.user"
                 :href="route('dashboard')"
                 class="text-sm underline"
-                >Dashboard</Link
-            >
+                >Dashboard</Link>
 
             <template v-else>
                 <Link :href="route('login')" class="text-base underline">
-                    Login</Link
-                >
+                    Login</Link>
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
-                    class="ml-4 text-base underline place-self-end"
-                >
+                    class="ml-4 text-base underline place-self-end">
                     Register</Link
                 >
                 </template>
@@ -174,7 +171,7 @@
 
 <script>
 import { defineAsyncComponent, defineComponent } from "vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/vue3";
 
 import JetApplicationMark from "@/Components/ApplicationMark.vue";
 import JetButton from "@/Components/PrimaryButton.vue";

@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <app-layout title="Projects">
 
         <template #header>
           <h2 class="text-xl font-semibold leading-tight text-gray-800"> Projects</h2>
@@ -8,14 +8,14 @@
             <div class="mx-auto text-right max-w-7xl sm:px-6 lg:px-8"> 
                 <jet-button class="p-3 font-bold text-blue-500 bg-blue-100 border-2 border-blue-500 hover:bg-blue-200 rounded-xl"
                 @click="
-                acting = true;
-                method = 'post',
-                action = route('skills.store');
+                        acting = true;
+                        method = 'post';
+                        action = route('projects.store');
                 ">
                     Add new +
                 </jet-button>
                 
-                <jet-modal :show="acting" closeable="true" @close="acting = null">
+                <jet-modal :show="acting" :closeable="true" @close="acting = null">
                     <div class="p-8 shadow-2xl bg-gray-50" >
                         <form class="flex-col items-center p-16" @submit.prevent="submit"> 
                         
@@ -84,10 +84,26 @@
                             <BeakerIcon> </BeakerIcon>  
                         </td>
                         <td class="px-6 py-4">
-                            <jet-button class="mr-2 text-indigo-500 bg-indigo-500 border border-indigo-300 hover:bg-indigo-800">
+                            <jet-button class="mr-2 text-indigo-500 bg-indigo-500 border border-indigo-300 hover:bg-indigo-800"
+                            @click="
+                            acting= true;
+                            method = 'put';
+                            action = route('projects.update', [project.id])
+                            form.title = project.title;
+                            form.Description = project.Description;
+                            form.Color = project.Color;
+                            form.icon_name = project.icon_name;
+                            
+                            ">
                                 Edit
                             </jet-button>
-                            <jet-button class="ml-2 text-red-500 bg-red-500 border border-red-300 hover:bg-red-800">
+                            <jet-button class="ml-2 text-red-500 bg-red-500 border border-red-300 hover:bg-red-800"
+                            @click=" //after clicking button
+                            method='delete';
+                            action = route('projects.destroy', [project.id]);
+                            submit();  
+                            ">
+                            
                                 Delete
                             </jet-button>
                         </td>
@@ -95,7 +111,7 @@
                     
                 </tbody>
                 </table>
-                <div v-else class="p-3 text-red-800 bg-red-100 border border-red-400 rounded-lg">
+                <div v-else class="p-3 mt-5 text-left text-red-800 bg-red-100 border border-red-400 rounded-lg">
                     There are no projects yet. Let's create one.
                 </div>
             </div>
@@ -131,7 +147,7 @@ export default {
     methods:{
         submit()
         {
-            this.form.submit('post', route('projects.store'), 
+            this.form.submit(this.method, this.action, 
             {
                 onSuccess: ()=> {
                     this.form.reset('title');
